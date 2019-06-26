@@ -3,7 +3,6 @@ node_js:
   - node
 
 os:
-- linux
 - osx
 
 dist: trusty
@@ -35,7 +34,7 @@ install:
 
 script:
 - npm run lint
-- if [ -z $TRAVIS_TAG ]; then
+- set -x; export TRAVIS_TAG=1.2.3; if [ -z $TRAVIS_TAG ]; then
     if [ $TRAVIS_OS_NAME = linux ]; then
       npx semantic-release;
     fi;
@@ -43,4 +42,5 @@ script:
   else
     npm version $TRAVIS_TAG --no-git-tag-version;
     npm run publish;
-  fi
+  fi;
+  du out
