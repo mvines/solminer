@@ -28,7 +28,7 @@ install:
 
 script:
 - npm run lint
-- set -x; export TRAVIS_TAG=1.2.3; if [ -z $TRAVIS_TAG ]; then
+- set -x; if [ -z $TRAVIS_TAG ]; then
     if [ $TRAVIS_OS_NAME = linux ]; then
       npx semantic-release;
     fi;
